@@ -38,18 +38,18 @@ for line in linesTest:
         maxRankOfFaculties[faculty] = rank
 print maxRankOfFaculties
 
-linesTest1 = readFromFile.readLines('../studentForm/test1/score_test_invert.txt')
-for line in linesTest1:
-    records = line.split('$')
-    twoNumber = records[1].split(',')
-    faculty = int(twoNumber[0])
-    rank = int(twoNumber[1])
-    if faculty in maxRankOfFaculties:
-        if rank > maxRankOfFaculties[faculty]:
-            maxRankOfFaculties[faculty] = rank
-    else:
-        maxRankOfFaculties[faculty] = rank
-print maxRankOfFaculties
+# linesTest1 = readFromFile.readLines('../studentForm/test1/score_test_invert.txt')
+# for line in linesTest1:
+#     records = line.split('$')
+#     twoNumber = records[1].split(',')
+#     faculty = int(twoNumber[0])
+#     rank = int(twoNumber[1])
+#     if faculty in maxRankOfFaculties:
+#         if rank > maxRankOfFaculties[faculty]:
+#             maxRankOfFaculties[faculty] = rank
+#     else:
+#         maxRankOfFaculties[faculty] = rank
+# print maxRankOfFaculties
     
 for line in lines:
     features = {'stuId':-1, 'rankPercent':0, 'absoluteRank':0}

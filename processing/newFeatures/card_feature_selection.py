@@ -107,7 +107,7 @@ def get_max_value_from_dict(any_dict):
 #     return output_line
 
 def get_loc_dict(loc_dict):
-    lines = open("../original_data/loc_dict.csv").readlines()
+    lines = open("loc_dict.csv").readlines()
     for line in lines:
         temps = line.strip("\r\n").split(",")
         id = temps[0]
@@ -118,7 +118,7 @@ def get_loc_dict(loc_dict):
 
 
 def get_loc_impor(loc_impor):
-    lines = open("../original_data/loc_impor.csv").readlines()
+    lines = open("loc_impor.csv").readlines()
     for line in lines:
         temps = line.strip("\r\n").split(",")
         loc = temps[0]

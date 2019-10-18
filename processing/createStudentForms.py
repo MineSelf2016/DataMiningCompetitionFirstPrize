@@ -14,10 +14,10 @@ def invertForm(filePath):
     ret = ""
     for key, value in students.iteritems():
         ret += str(key) + "$" + value + '\n'
-    fw = open("../studentForm/test/" + filePath.split('/')[-1].split('.')[0] + "_invert.txt", 'w')
+    fw = open("../studentForm/train/" + filePath.split('/')[-1].split('.')[0] + "_invert.txt", 'w')
     fw.write(ret)
     fw.close()
 
 if __name__=='__main__':
-    invertForm('../data/test/' + sys.argv[1])
+    invertForm('../data/train/' + sys.argv[1])
     
