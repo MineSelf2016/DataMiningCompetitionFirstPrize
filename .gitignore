@@ -1,2 +1,6 @@
 record.xlsx
 .DS_Store
+studentForm
+data
+processing/testProcessed
+processing/trainProcessed
