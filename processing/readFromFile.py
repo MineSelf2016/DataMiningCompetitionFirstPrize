@@ -11,6 +11,6 @@ def readLines(filePath):
     
 if __name__=="__main__":
     if len(sys.argv) < 2:
-        print "please follow the file name that you want to read when running this script."
+        print("please follow the file name that you want to read when running this script.")
     else:
-        print read(sys.argv[1])[:1000] + "\n..."
+        print(read(sys.argv[1])[:1000] + "\n...")

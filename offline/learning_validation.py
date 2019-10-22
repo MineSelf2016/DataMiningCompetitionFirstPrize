@@ -43,23 +43,31 @@ def run_model(cv_file_list, learning_model):
         tools.read_data_with_label([cv_file_list[i]], test_x, test_y, None, None)
 
         if learning_model == "gdbt":
+            print("Hello, world")
             predict_y_list, predict_y_prob_list = gradient_boosting.learn(x, y, test_x)
-        elif learning_model == "svm":
-            predict_y_list, predict_y_prob_list = support_vector_machine.learn(x, y, test_x)
-        elif learning_model == "ada":
-            predict_y_list, predict_y_prob_list, predict_y_prob_list = ada_boosting.learn(x, y, test_x)
-        elif learning_model == "rf":
-            predict_y_list, predict_y_prob_list = random_forest.learn(x, y, test_x)
-        elif learning_model == "et":
-            predict_y_list, predict_y_prob_list = extra_trees.learn(x, y, test_x)
-        elif learning_model == "knnBag":
-            predict_y_list, predict_y_prob_list = knn_bagging.learn(x, y, test_x)
-        elif learning_model == "nn":
-            predict_y_list, predict_y_prob_list = neural_network.learn(x, y, test_x)
-        elif learning_model == "xgb":
-            predict_y_list, predict_y_prob_list = xgboosting.learn(x, y, test_x)
+        # elif learning_model == "svm":
+        #     predict_y_list, predict_y_prob_list = support_vector_machine.learn(x, y, test_x)
+        # elif learning_model == "ada":
+        #     predict_y_list, predict_y_prob_list, predict_y_prob_list = ada_boosting.learn(x, y, test_x)
+        # elif learning_model == "rf":
+        #     predict_y_list, predict_y_prob_list = random_forest.learn(x, y, test_x)
+        # elif learning_model == "et":
+        #     predict_y_list, predict_y_prob_list = extra_trees.learn(x, y, test_x)
+        # elif learning_model == "knnBag":
+        #     predict_y_list, predict_y_prob_list = knn_bagging.learn(x, y, test_x)
+        # elif learning_model == "nn":
+        #     predict_y_list, predict_y_prob_list = neural_network.learn(x, y, test_x)
+        # elif learning_model == "xgb":
+        #     predict_y_list, predict_y_prob_list = xgboosting.learn(x, y, test_x)
 
         if variables.if_write_cv_prediction:
+            print("test_y", test_y)
+            print("-" * 30)
+            print()
+            print("predict_y_prob_list", predict_y_prob_list)
+            print("-" * 30)
+            print()
+            
             if variables.prob_mode:
                 for real, prediction_prob in zip(test_y, predict_y_prob_list):
                     temp_line = ""
@@ -95,13 +103,13 @@ def run_model(cv_file_list, learning_model):
                     f1_single = 0
                 macro_f1_single += float(actual_num_single) / total_num_single * f1_single
 
-                print subsidy + "case :" + "     right_num: " + str(right_num_single) + "   prediction_num:  " + str(
+                print(subsidy + "case :" + "     right_num: " + str(right_num_single) + "   prediction_num:  " + str(
                     prediction_num_single) + "   acture_num:" + str(
                     actual_num_single) + "    prcise: " + str(precise_single) + "   recall: " + str(
                     recall_single) + "    f1: " + str(
-                    f1_single)
+                    f1_single))
 
-            print "macro F1:" + str(macro_f1_single)
+            print("macro F1:" + str(macro_f1_single))
 
         for subsidy in ["1000", "1500", "2000"]:
             right_num_dict[subsidy] += right_num_dict_temp.get(subsidy, 0)
@@ -110,7 +118,7 @@ def run_model(cv_file_list, learning_model):
 
         end = time.time()
 
-        print "one cv done  time: " + str(end - start)
+        print("one cv done  time: " + str(end - start))
 
     for subsidy in ["1000", "1500", "2000"]:
         right_num = right_num_dict.get(subsidy, 0)
@@ -134,12 +142,12 @@ def run_model(cv_file_list, learning_model):
         avg_macro_f1 += weighted_f1
 
         if variables.if_validation_detail:
-            print subsidy + "case :" + "     right_num: " + str(right_num) + "   prediction_num:  " + str(
+            print(subsidy + "case :" + "     right_num: " + str(right_num) + "   prediction_num:  " + str(
                 prediction_num) + "   acture_num:" + str(
                 actual_num) + "    prcise: " + str(precise) + "   recall: " + str(recall) + "    f1: " + str(
-                f1) + "   weighted_f1:  " + str(weighted_f1)
+                f1) + "   weighted_f1:  " + str(weighted_f1))
 
-    print "avg macro F1:" + str(avg_macro_f1)
+    print("avg macro F1:" + str(avg_macro_f1))
 
     if variables.if_write_cv_prediction:
         w.close()
@@ -147,7 +155,7 @@ def run_model(cv_file_list, learning_model):
     return avg_macro_f1
 
 
-learning_model = "et"
+learning_model = "gdbt"
 
 # variables.learning_rate_xgb = float(sys.argv[1])
 # print "learning_rate_xgb= " + str(variables.learning_rate_xgb)
@@ -162,7 +170,7 @@ for i in range(variables.cv_num):
 start = time.time()
 run_model(cv_file_list, learning_model)
 end = time.time()
-print "time:" + str(end - start)
+print("time:" + str(end - start))
 
 # for i in range(10):
 #     for j in range(10):

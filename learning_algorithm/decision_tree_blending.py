@@ -20,7 +20,7 @@ def learn(x, y, test_x):
             weight_list.append(variables.weight_2000_gdbt_b)
 
     clf = tree.DecisionTreeClassifier(min_samples_split=500).fit(x, y, weight_list)
-    print clf.feature_importances_
+    print(clf.feature_importances_)
 
     prediction_list = clf.predict(test_x)
 

@@ -33,7 +33,7 @@ if __name__=='__main__':
         #X = scaler.transform(X)
         if sys.argv[1] == 'test':
             X_test, feaNames2, stuId2 = loadToArray('testProcessed/examples_test.txt')
-            print np.vstack((X, X_test)).shape
+            # print np.vstack((X, X_test)).shape
             scaler = preprocessing.StandardScaler().fit(np.vstack((X, X_test)))
             X = scaler.transform(X)
             X_test = scaler.transform(X_test)

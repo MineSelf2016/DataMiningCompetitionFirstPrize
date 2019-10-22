@@ -4,13 +4,13 @@ sys.path.append("../")
 from commons import *
 from learning_algorithm import *
 
-learning_model = "et"
+learning_model = "gbdt"
 
 # variables.random_seed = int(sys.argv[1])
 # print "random_seed= " + str(variables.random_seed)
 
 training_file_loc = "../original_data/training_examples.txt"
-test_file_loc = "../original_data/idexamples_test.txt"
+test_file_loc = "../original_data/idexamples_test_std.txt"
 
 if variables.prob_mode:
     output_file_loc = "../original_data/et_prediction/prediction_with_prob_" + learning_model + "_seed_" + str(
@@ -29,7 +29,7 @@ prediction = []
 tools.read_data_with_label([training_file_loc], x, y, None, None)
 tools.read_data_without_label([test_file_loc], test_x, test_ids)
 
-if learning_model == "gdbt":
+if learning_model == "gbdt":
     prediction_list, prediction_list_prob = gradient_boosting.learn(x, y, test_x)
 elif learning_model == "svm":
     prediction_list, prediction_list_prob = support_vector_machine.learn(x, y, test_x)

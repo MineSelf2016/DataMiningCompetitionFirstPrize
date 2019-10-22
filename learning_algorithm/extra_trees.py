@@ -17,15 +17,15 @@ def learn(x, y, test_x):
                                      min_impurity_split=variables.min_impurity_split_et,
                                      class_weight=variables.cw_et).fit(x, y)
 
-    print "n_estimators=", variables.n_estimators_et,
-    print "max_depth=", variables.max_depth_et,
-    print "min_samples_split=", variables.min_samples_split_et,
-    print "min_samples_leaf=", variables.min_samples_leaf_et,
-    print "max_features=",variables.max_feature_et,
-    print "max_leaf_nodes=",variables.max_leaf_nodes_et,
-    print "criterion=",variables.criterion_et,
-    print "min_impurity_split=",variables.min_impurity_split_et,
-    print "class_weight=", variables.cw_et
+    prin( "n_estimators=", variables.n_estimators_et)
+    print("max_depth=", variables.max_depth_et)
+    # print "min_samples_split=", variables.min_samples_split_et,
+    # print "min_samples_leaf=", variables.min_samples_leaf_et,
+    # print "max_features=",variables.max_feature_et,
+    # print "max_leaf_nodes=",variables.max_leaf_nodes_et,
+    # print "criterion=",variables.criterion_et,
+    # print "min_impurity_split=",variables.min_impurity_split_et,
+    # print "class_weight=", variables.cw_et
 
     prediction_list = clf.predict(test_x)
     prediction_list_prob = clf.predict_proba(test_x)

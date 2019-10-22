@@ -28,7 +28,10 @@ def learn(x, y, test_x):
                                      max_features=variables.max_feature_gdbt).fit(x, y, weight_list)
     prediction_list = clf.predict(test_x)
     prediction_list_prob = clf.predict_proba(test_x)
+    print("predict_y_prob_list", prediction_list_prob)
+    print("-" * 30)
+    print()
     # print prediction_list_prob
     # print clf.classes_
 
-    return prediction_list,prediction_list_prob
+    return prediction_list, prediction_list_prob

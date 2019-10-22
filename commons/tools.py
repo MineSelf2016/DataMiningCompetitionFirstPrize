@@ -80,14 +80,14 @@ def add_positive_sample(x, y):
 def get_subsidy_distribution(y_list):
     count_dict = {}
     for y in y_list:
-        if not count_dict.has_key(y):
+        if not y in count_dict.keys():
             count_dict[y] = 0
         count_dict[y] += 1
 
-    print "subsidy distribution:-----------------"
+    print("subsidy distribution:-----------------")
     for key in ["0", "1000", "1500", "2000"]:
-        print str(key) + " : " + str(count_dict.get(key, 0))
-    print "--------------------------------------"
+        print(str(key) + " : " + str(count_dict.get(key, 0)))
+    print("--------------------------------------")
 
 
 def read_fea_list(fea_file_loc):
